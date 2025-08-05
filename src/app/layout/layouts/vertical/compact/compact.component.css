@@ -1,0 +1,38 @@
+
+.btnnext{
+    font-size: 14px;
+    padding: 6px;
+    padding-left: 28px;
+    padding-right: 28px;
+
+    border-radius: 50px;
+  
+   background-color: #E2E8F0;
+
+   color:  #b6aeae;
+}
+.btnnext1{
+    font-size: 14px;
+    padding: 6px;
+    padding-left: 28px;
+    padding-right: 28px;
+    /* margin-top: 6px; */
+    /* margin-left: 2px; */
+    border-radius: 50px;
+    background-color: #ff6f3b;
+    width: auto;
+    color: white;
+    font-weight: 500;
+}
+
+.btn-disabled {
+    background-color: #E2E8F0 !important;
+    color: #b6aeae !important;
+    cursor: not-allowed;
+  }
+  
+.footer-images {
+    display: inline-flex;
+    gap: 20px;
+    margin-left: 12%;
+}

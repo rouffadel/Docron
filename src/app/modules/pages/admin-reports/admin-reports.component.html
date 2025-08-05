@@ -1,0 +1,450 @@
+<div   class="flex flex-col  flex-auto min-w-0">
+    <!-- <div class="flex flex-col flex-auto   min-w-0"> -->
+
+        <div class="no-print flex flex-cols px-8 pt-4 gap-2 ">
+            <mat-form-field  style="width: 160px; position: relative;bottom: 2px;" class="col-span-2 search1 custom-background" appearance="outline">
+                <input matInput [matDatepicker]="picker1" [max]="cardrep.toDate" placeholder="Select From Date"   [(ngModel)]="cardrep.fromDate"  required />
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+              
+              <mat-form-field  style="width: 150px; position: relative;bottom: 2px;" class="col-span-2 search1 custom-background" appearance="outline">
+                <input matInput [matDatepicker]="picker2" [min]="cardrep.fromDate" placeholder="Select To Date"  [(ngModel)]="cardrep.toDate" required />
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+              
+              <mat-form-field class="col-span-2 search1 custom-background" appearance="outline">
+                <mat-icon matPrefix>perm_identity</mat-icon>
+                <input matInput [(ngModel)]="searchKey" placeholder="Search" autocomplete="off" (keyup)="applyFilter()" />
+                <mat-icon matPrefix>search</mat-icon>
+                <button mat-button matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey" (click)="onSearchClear()">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+              
+              
+             
+            
+     <div class="mt-1">
+
+            <button #myButton class="fuse-mat-button-rounded  flex flex-col justify-end"
+            [disabled]="!cardrep.fromDate || !cardrep.toDate"
+            [ngClass]="!cardrep.fromDate || !cardrep.toDate ? 'btnsub' : 'btnsub1'" 
+            (click)="getCardReports()">
+            
+            <span class="ml-2">Generate</span>
+        </button>
+            </div>  
+
+            <div class="flex mx-0">
+                <div class="mr-1">
+                  <button mat-mini-fab color="primary" style="background-color: #ff6f3b !important; box-shadow: none;" (click)="ExportTOExcel()" matTooltip="Export To Excel">
+                    <mat-icon svgIcon="mat_outline:sim_card_download"></mat-icon>
+                  </button>
+                </div>
+                <div class="">
+                  <button mat-mini-fab color="primary" style="background-color: #ff6f3b !important; box-shadow: none;" (click)="exportpdf1()" matTooltip="Export To PDF">
+                    <mat-icon svgIcon="mat_outline:picture_as_pdf"></mat-icon>
+                  </button>
+                </div>
+              </div>
+
+     </div>
+
+        <!-- <div class="flex flex-cols pt-2">
+
+        <div class=" ">
+     <div class="px-8 pt-2">
+     <div class="w-60 p-2 bg-card  h-85">
+        <div >Consultation Billing</div>
+        <mat-divider class="my-2"></mat-divider>
+        <div class="flex flex-cols justify-between">
+            <div class="text-secondary">Total Billed</div>
+            <div>{{totalBilled}}</div>
+        </div>
+
+        <mat-divider class="my-2"></mat-divider>
+        <div class="flex flex-cols justify-between">
+            <div class="text-secondary">Total Collected</div>
+            <div>{{totalCollected}}</div>
+        </div>
+
+        <mat-divider class="my-2"></mat-divider>
+        <div class="flex flex-cols justify-between">
+            <div class="text-secondary">Cash</div>
+            <div>{{cash}}</div>
+        </div>
+
+        <mat-divider class="my-2"></mat-divider>
+        <div class="flex flex-cols justify-between">
+            <div class="text-secondary">Card</div>
+            <div>{{card}}</div>
+        </div>
+
+        <mat-divider class="my-2"></mat-divider>
+        <div class="flex flex-cols justify-between">
+            <div class="text-secondary">UPI</div>
+            <div>{{wallet}}</div>
+        </div>
+
+        <mat-divider class="my-2"></mat-divider>
+        <div class="flex flex-cols justify-between">
+            <div class="text-secondary">NetBanking</div>
+            <div>{{outstanding}}</div>
+        </div>
+
+        <mat-divider class="my-2"></mat-divider>
+        <div class="flex flex-cols justify-between">
+            <div class="text-secondary">Unq. Billed Patients</div>
+            <div>{{billedpatients}}</div>
+        </div>
+
+        <mat-divider class="my-2"></mat-divider>
+        <div class="flex flex-cols justify-between">
+            <div class="text-secondary">Total Number of Patients</div>
+            <div>{{totalNumberOfPatients}}</div>
+        </div>
+
+     </div>
+    </div>
+     </div>
+
+     <div class="bg-card mt-2 mr-7" style="width: 610px !important;
+     height: 317px !important;">
+        <canvas #barChart class="pt-4" width="600" height="290"></canvas>
+      </div>
+
+      <div class="bg-card mt-2 mr-7" style="width: 610px !important;
+     height: 317px !important;">
+        <canvas #barChart1 class="pt-4" width="600" height="290"></canvas>
+      </div>
+
+    </div> -->
+
+
+    <div class="flex flex-col lg:flex-row pt-2 gap-0">
+        <div class="px-8 pt-0 w-full lg:w-1/3">
+          <div class="p-4 bg-card h-auto shadow">
+            <div class="font-semibold text-lg mb-2">Consultation Billing</div>
+            <mat-divider class="my-2"></mat-divider>
+      
+            <div class="flex flex-row justify-between">
+              <div class="text-secondary">Total Billed</div>
+              <div>{{ totalBilled }}</div>
+            </div>
+      
+            <mat-divider class="my-2"></mat-divider>
+            <div class="flex flex-row justify-between">
+              <div class="text-secondary">Total Collected</div>
+              <div>{{ totalCollected }}</div>
+            </div>
+      
+            <mat-divider class="my-2"></mat-divider>
+            <div class="flex flex-row justify-between">
+              <div class="text-secondary">Cash</div>
+              <div>{{ cash }}</div>
+            </div>
+      
+            <mat-divider class="my-2"></mat-divider>
+            <div class="flex flex-row justify-between">
+              <div class="text-secondary">Card</div>
+              <div>{{ card }}</div>
+            </div>
+      
+            <mat-divider class="my-2"></mat-divider>
+            <div class="flex flex-row justify-between">
+              <div class="text-secondary">UPI</div>
+              <div>{{ wallet }}</div>
+            </div>
+      
+            <mat-divider class="my-2"></mat-divider>
+            <div class="flex flex-row justify-between">
+              <div class="text-secondary">NetBanking</div>
+              <div>{{ outstanding }}</div>
+            </div>
+      
+            <mat-divider class="my-2"></mat-divider>
+            <div class="flex flex-row justify-between">
+              <div class="text-secondary">Unq. Billed Patients</div>
+              <div>{{ billedpatients }}</div>
+            </div>
+      
+            <mat-divider class="my-2"></mat-divider>
+            <div class="flex flex-row justify-between">
+              <div class="text-secondary">Total Number of Patients</div>
+              <div>{{ totalNumberOfPatients }}</div>
+            </div>
+          </div>
+        </div>
+      
+        <div class="flex flex-col lg:flex-row gap-4 w-full lg:w-2/3">
+          <div class="bg-card shadow flex-grow" style="height: 358px;">
+            <canvas #barChart class="pt-4 w-full h-full" width="600" height="290"></canvas>
+          </div>
+      
+          <div class="bg-card shadow flex-grow" style="height: 358px; margin-right: 3%;">
+            <canvas #barChart1 class="pt-4 w-full h-full" width="600" height="290"></canvas>
+          </div>
+        </div>
+      </div>
+      
+
+        <!-- Main -->
+        <div class="flex-auto px-8 pt-4">
+           
+             <div class="mt-1">
+                    </div>     
+                
+            <div class="flex justify-between items-center">
+                <div class="text-xl">Service Billing</div>
+                <div class="no-print flex items-center">
+                  <!-- <div class="flex mx-2">
+                    <div class="mr-1">
+                      <button mat-mini-fab color="primary" style="background-color: #ff6f3b !important; box-shadow: none;" (click)="ExportTOExcel()" matTooltip="Export To Excel">
+                        <mat-icon svgIcon="mat_outline:sim_card_download"></mat-icon>
+                      </button>
+                    </div>
+                    <div class="">
+                      <button mat-mini-fab color="primary" style="background-color: #ff6f3b !important; box-shadow: none;" (click)="exportpdf1()" matTooltip="Export To PDF">
+                        <mat-icon svgIcon="mat_outline:picture_as_pdf"></mat-icon>
+                      </button>
+                    </div>
+                  </div> -->
+                  <mat-form-field class="custom-background" appearance="outline">
+                    <mat-select multiple [(ngModel)]="selectedColumns" (selectionChange)="updateDisplayedColumns()">
+                      <mat-select-trigger>
+                        <span>Select Columns</span>
+                      </mat-select-trigger>
+                      <mat-option style="color: #212121; font-weight: 500;" *ngFor="let column of columnDefinitions" [value]="column.def">
+                        {{ column.displayName }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              
+    
+            <div  class="example-container mat-elevation-z8" #TABLE>
+                <table class="table1" id="table1" mat-table [dataSource]="deptReports" matSort>
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="department">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-lg text-white">
+                            Department
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{ element.department }}
+                        </td>
+                        <!-- <tfoot mat-footer-cell *matFooterCellDef>
+                            aaa
+                        </tfoot>     -->
+                    </ng-container>
+    
+                    <ng-container matColumnDef="service">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-lg text-white">
+                            Service
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{ element.service }}
+                        </td>
+                        <!-- <tfoot mat-footer-cell *matFooterCellDef>
+                            aaa
+                        </tfoot>     -->
+                    </ng-container>
+                    <ng-container matColumnDef="count">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-lg text-white">
+                            Count
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                       {{ element.count }}
+                        </td>
+                        <!-- <tfoot mat-footer-cell *matFooterCellDef>
+                            aaa
+                        </tfoot> -->
+                    </ng-container>
+                    <ng-container matColumnDef="totalbill">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-lg text-white">
+                            Total Bill
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{ element.totalBilled }}
+                        </td>
+                        <!-- <tfoot mat-footer-cell *matFooterCellDef>
+                            aaa
+                        </tfoot> -->
+                    </ng-container>
+                    <ng-container matColumnDef="totalcollected">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-lg text-white">
+                            Total Collected
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                            {{ element.totalCollected }}
+                        </td>
+                        <!-- <tfoot mat-footer-cell *matFooterCellDef>
+                            aaa
+                        </tfoot> -->
+                    </ng-container>
+               
+                    
+                  
+    
+                    <tr mat-header-row class="height" *matHeaderRowDef="displayedColumns; sticky: true" style="background-color: #A9A9A9 ;"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                    <!-- <tr mat-footer-row *matFooterRowDef="displayedColumns;"></tr> -->
+                </table>
+            <mat-paginator class="no-print" [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="25" #paginator2></mat-paginator>
+                
+            </div>
+    
+          
+        </div>
+
+
+    <div   class="scrollable-content flex-auto p-6 sm:p-10">
+  
+            <div class="flex justify-between items-center">
+                <div class="text-xl">Patient Details</div>
+                <div class="no-print flex items-center">
+                  <div class="flex mx-2">
+                    <div class="mr-1">
+                      <button mat-mini-fab color="primary" style="background-color: #ff6f3b !important; box-shadow: none;" (click)="ExportTOExcel3()" matTooltip="Export To Excel">
+                        <mat-icon svgIcon="mat_outline:sim_card_download"></mat-icon>
+                      </button>
+                    </div>
+                    <div>
+                      <button mat-mini-fab color="primary" style="background-color: #ff6f3b !important; box-shadow: none;" (click)="exportpdf3()" matTooltip="Export To PDF">
+                        <mat-icon svgIcon="mat_outline:picture_as_pdf"></mat-icon>
+                      </button>
+                    </div>
+                  </div>
+                  <mat-form-field class="custom-background" appearance="outline">
+                    <!-- <mat-label>Select Columns</mat-label> -->
+                    <mat-select multiple [(ngModel)]="selectedColumns3" (selectionChange)="updateDisplayedColumns3()">
+                      <mat-select-trigger>
+                        <span>Select Columns</span>
+                      </mat-select-trigger>
+                      <mat-option style="color: #212121; font-weight: 500;" *ngFor="let column of columnDefinitions3" [value]="column.def">
+                        {{ column.displayName }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              
+
+       
+
+        <div  class="example-container1 mat-elevation-z8" >
+            <table class="table1" id="table1" mat-table [dataSource]="patientsappointments" matSort
+             matSortActive="appointmentID" matSortDirection="asc" (matSortChange)="sortData($event)">
+                <!-- Position Column -->
+                <ng-container matColumnDef="Patient ARCID">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-lg text-white">
+                        Patient ARCID
+                    </th>
+                    <td mat-cell  style="width: 20px;" *matCellDef="let element">
+                        {{ element.patientARCID }}
+                    </td>
+                    <!-- <tfoot mat-footer-cell *matFooterCellDef>
+                        aaa
+                    </tfoot>     -->
+                </ng-container>
+
+                <ng-container matColumnDef="SL">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-lg text-white">
+                        SL
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.appointmentID }}
+                    </td>
+                    <!-- <tfoot mat-footer-cell *matFooterCellDef>
+                        aaa
+                    </tfoot>     -->
+                </ng-container>
+                <ng-container matColumnDef="Patient">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header="patient" class="text-lg text-white">
+                        Patient Name & Gender
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      <b>  {{ element.patient }}</b> ({{ element.gender | slice:0:1}},
+                        {{ element.age }}y)
+                    </td>
+                    <!-- <tfoot mat-footer-cell *matFooterCellDef>
+                        aaa
+                    </tfoot> -->
+                </ng-container>
+                <ng-container matColumnDef="Mobile">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header="mobile" class="text-lg text-white">
+                        Phone Number
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.mobile }}
+                    </td>
+                    <!-- <tfoot mat-footer-cell *matFooterCellDef>
+                        aaa
+                    </tfoot> -->
+                </ng-container>
+                <ng-container matColumnDef="serviceName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header="serviceName" class="text-lg text-white">
+                        Service Name
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                        {{ element.serviceName }}
+                    </td>
+                    <!-- <tfoot mat-footer-cell *matFooterCellDef>
+                        aaa
+                    </tfoot> -->
+                </ng-container>
+                <ng-container matColumnDef="Last Visit">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header="serviceDate" class="text-lg text-white">
+                        Last Visit
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      <b>  {{ element.serviceDate }}</b>
+                    </td>
+                    <!-- <tfoot mat-footer-cell *matFooterCellDef>
+                        aaa
+                    </tfoot>          -->
+                </ng-container>        
+                <ng-container matColumnDef="Visit Count">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header class="text-lg text-white">
+                        Discount
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      <b>  {{ element.discount }}</b>
+                    </td>                  
+                </ng-container>  
+                <ng-container matColumnDef="Payment">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header="payment" class="text-lg text-white">
+                        Payment
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      <b>  {{ element.payment }}</b>
+                    </td>                  
+                </ng-container>      
+                <ng-container matColumnDef="ModeofPayment">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header="modeofPayment" class="text-lg text-white">
+                        Mode Of Payment
+                    </th>
+                    <td mat-cell *matCellDef="let element">
+                      <b>  {{ element.modeofPayment }}</b>
+                    </td>                  
+                </ng-container> 
+                
+                <tr mat-header-row class="height" *matHeaderRowDef="displayedColumns3; sticky: true" style="background-color: #A9A9A9 ;"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns3"></tr>
+                <!-- <tr mat-footer-row *matFooterRowDef="displayedColumns;"></tr> -->
+            </table>
+            <mat-paginator class="no-print" [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="25" #paginator1></mat-paginator>
+        </div>
+
+      
+    </div>
+
+</div>
+       
+    
+    <!-- </div> -->
+
+
+ 

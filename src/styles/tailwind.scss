@@ -1,0 +1,18 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Main Tailwind file for injecting utilities.
+/* ----------------------------------------------------------------------------------------------------- */
+@tailwind utilities;
+.bg-primary {
+    color: #fff;
+    background-color: #666666 !important;
+    border-radius: 5px 5px 0px 0px !important;
+}
+.min-h-20 {
+    min-height: 3rem !important;
+}
+.text-2xl {
+    font-size: 16px !important;
+}
+.h-20 {
+    height: 3rem !important;
+}

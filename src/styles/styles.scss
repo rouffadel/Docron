@@ -1,0 +1,135 @@
+/* ----------------------------------------------------------------------------------------------------- */
+/*  @ Import/write your custom styles here.
+/*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
+/* ----------------------------------------------------------------------------------------------------- */
+
+.table1 tr {
+    transition: background 0.2s ease-in  !important;
+}
+
+// .table1 tr:nth-child(even) {
+//     background: rgb(221, 217, 217) !important;
+// }
+// .table1 tr:nth-child(even) {
+//     background: rgba(255, 118, 51, 0.9) !important; /* 30% opacity */
+// }
+
+.table1 tr:nth-child(even) {
+    background:  #f8fdff !important; /* 30% opacity */
+}
+
+.table1 tr:hover {
+    // background: rgb(179, 240, 182) !important;
+    background: lightblue !important;
+
+   // cursor: pointer !important;
+}
+
+// table tr {
+//     transition: background 0.2s ease-in  !important;
+// }
+
+// table tr:nth-child(even) {
+//     background: rgb(221, 217, 217) !important;
+// }
+
+// table tr:hover {
+//     background: rgb(179, 240, 182) !important;
+//     cursor: pointer !important;
+// }
+    // table {
+    //   border-collapse: collapse !important;
+    //   width: 100%;
+    // }
+    
+    // th, td {
+    //   padding: 8px;
+    //   text-align: left;
+    //   border-bottom: 1px solid #ddd !important;
+    // }
+    
+    // tr:hover {background-color: coral !important;}
+  
+.mat-simple-snackbar-action {
+    flex-shrink: 0;
+    margin: -8px -8px -8px 8px;
+}
+
+.mat-simple-snackbar-action {
+    color: #ff4081;
+}
+
+/* Make the header cells darker */
+// tr.mat-header-row {
+//     height: 56px;
+//     color: white !important; 
+//     font-weight: bold !important;
+//      background-color: #A9A9A9 !important;
+// }
+
+
+.mat-simple-snackbar-action {
+    line-height: 1;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: 500;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px!important;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: #838383;
+}
+::-webkit-scrollbar-track {
+    background-color: #c1c1c1;
+    border-radius: 20px;
+}
+.bg-primary {
+    color: #fff;
+    background-color: #666666 !important;
+}
+th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
+    padding: 0px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+}
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+
+.mat-flat-button{
+    
+    background-color: #ff6f3b  !important; 
+}
+
+.center-container {
+    display: flex;
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    height: 30vh; /* Set the container height to 100% of the viewport height */
+  }
+  .mat-sort-header{
+    font: 'text-lg text-white';
+  }
+
+
+  .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: white;
+  }
+  
+  .mat-pseudo-checkbox-checked {
+    background-color: #ff6f3b !important;
+    border-color: #ff6f3b !important;
+  }
+
+.docron-text {
+    font-size: 55px;
+    font-weight: 900;
+}
+
+.docron-text1 {
+    font-size: 22px;
+    font-weight: 900;
+}
